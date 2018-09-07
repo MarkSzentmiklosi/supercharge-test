@@ -12,6 +12,7 @@ public class Transaction {
     private double transferAmount;
     private Date dateOfTransaction;
     private double currentBalance;
+    private TransactionType typeOfTransaction;
 
     public Transaction() {
     }
