@@ -22,6 +22,11 @@ public class TransactionService {
         modifyTransactionHistory(customer, transaction);
     }
 
+    public void saveWithdrawal(Customer customer, double withdrawAmount) {
+        Transaction transaction = getTransaction(customer.getBalance(), withdrawAmount, TransactionType.WITHDRAWAL);
+        modifyTransactionHistory(customer, transaction);
+    }
+
     private Transaction getTransaction(double currentBalance, double transactionAmount, TransactionType transactionType) {
         Transaction transaction = new Transaction();
         transaction.setCurrentBalance(currentBalance);
