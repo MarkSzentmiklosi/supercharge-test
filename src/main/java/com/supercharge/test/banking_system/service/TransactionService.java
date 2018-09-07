@@ -28,11 +28,19 @@ public class TransactionService {
         modifyTransactionHistory(customer, transaction);
     }
 
-    public List<Transaction> getTransactionHistoryByType(Customer customer, TransactionType transactionType){
+    public List<Transaction> getTransactionHistoryByType(Customer customer, TransactionType transactionType) {
         return customer
                 .getTransactionHistory()
                 .stream()
                 .filter(transaction -> transaction.getTypeOfTransaction().equals(transactionType))
+                .collect(Collectors.toList());
+    }
+
+    public List<Transaction> getTransactionHistoryByDate(Customer customer, Date date) {
+        return customer
+                .getTransactionHistory()
+                .stream()
+                .filter(transaction -> transaction.getDateOfTransaction().equals(date))
                 .collect(Collectors.toList());
     }
 
