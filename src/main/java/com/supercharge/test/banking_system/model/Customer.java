@@ -29,10 +29,4 @@ public class Customer {
                 ", balance=" + balance +
                 '}';
     }
-
-    public void deposit(double depositAmount) {
-        if (depositAmount > 0) {
-            balance += depositAmount;
-        }
-    }
 }
