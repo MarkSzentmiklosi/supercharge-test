@@ -16,4 +16,12 @@ public class Transaction {
     public Transaction() {
     }
 
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "transferAmount=" + transferAmount +
+                ", dateOfTransaction=" + dateOfTransaction +
+                ", currentBalance=" + currentBalance +
+                '}';
+    }
 }
