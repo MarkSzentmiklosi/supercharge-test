@@ -6,6 +6,7 @@ import com.supercharge.test.banking_system.model.TransactionType;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TransactionService {
 
@@ -25,6 +26,14 @@ public class TransactionService {
     public void saveWithdrawal(Customer customer, double withdrawAmount) {
         Transaction transaction = getTransaction(customer.getBalance(), withdrawAmount, TransactionType.WITHDRAWAL);
         modifyTransactionHistory(customer, transaction);
+    }
+
+    public List<Transaction> getTransactionHistoryByType(Customer customer, TransactionType transactionType){
+        return customer
+                .getTransactionHistory()
+                .stream()
+                .filter(transaction -> transaction.getTypeOfTransaction().equals(transactionType))
+                .collect(Collectors.toList());
     }
 
     private Transaction getTransaction(double currentBalance, double transactionAmount, TransactionType transactionType) {
