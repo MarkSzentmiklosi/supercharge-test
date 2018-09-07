@@ -17,6 +17,11 @@ public class TransactionService {
         modifyTransactionHistory(receiver, transactionOfReceiver);
     }
 
+    public void saveDeposit(Customer customer, double depositAmount) {
+        Transaction transaction = getTransaction(customer.getBalance(), depositAmount, TransactionType.DEPOSIT);
+        modifyTransactionHistory(customer, transaction);
+    }
+
     private Transaction getTransaction(double currentBalance, double transactionAmount, TransactionType transactionType) {
         Transaction transaction = new Transaction();
         transaction.setCurrentBalance(currentBalance);
