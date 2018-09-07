@@ -5,8 +5,9 @@ import com.supercharge.test.banking_system.model.Customer;
 public class WithdrawService {
 
     public void withdraw(Customer customer, double withdrawAmount) {
-        if (withdrawAmount > 0) {
-            customer.setBalance(customer.getBalance() - withdrawAmount);
+        double balanceOfCustomer = customer.getBalance();
+        if (withdrawAmount > 0 && balanceOfCustomer >= withdrawAmount) {
+            customer.setBalance(balanceOfCustomer - withdrawAmount);
         }
     }
 }
